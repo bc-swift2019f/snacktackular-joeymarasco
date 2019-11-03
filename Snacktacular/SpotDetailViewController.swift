@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 class SpotDetailViewController: UIViewController {
     
@@ -28,7 +29,20 @@ class SpotDetailViewController: UIViewController {
         }
         nameField.text = spot.name
         addressField.text = spot.address
-        
+    }
+    
+    func updateUserInterface() {
+        nameField.text = spot.name
+        addressField.text = spot.address
+    }
+    
+    func leaveViewController () {
+        let isPresentingInAddMode = presentingViewController is UINavigationController
+        if isPresentingInAddMode {
+            dismiss(animated: true, completion: nil)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     @IBAction func photoButtonPressed(_ sender: UIButton) {
@@ -37,15 +51,56 @@ class SpotDetailViewController: UIViewController {
     @IBAction func reviewButtonPressed(_ sender: UIButton) {
     }
     
+    @IBAction func lookupPlacePressed(_ sender: UIBarButtonItem) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+        spot.saveData { success in
+            if success {
+                self.leaveViewController()
+            } else {
+                print("### ERROR: Couldn't leave this view controller because the data was not saved")
+            }
+            
+        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        let isPresentingInAddMode = presentingViewController is UINavigationController
-        if isPresentingInAddMode {
-            dismiss(animated: true, completion: nil)
-        } else {
-            navigationController?.popViewController(animated: true)
-        }
+        leaveViewController()
     }
+}
+
+extension SpotDetailViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        spot.name = place.name!
+        spot.address = place.formattedAddress ?? "Unknown Address"
+        spot.coordinate = place.coordinate
+        updateUserInterface()
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
 }

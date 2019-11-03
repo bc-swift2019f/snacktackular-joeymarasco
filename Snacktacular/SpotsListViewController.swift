@@ -134,6 +134,3 @@ extension SpotsListViewController: FUIAuthDelegate {
 
 
 
-
-// these comments have been put in to edit the file
-
