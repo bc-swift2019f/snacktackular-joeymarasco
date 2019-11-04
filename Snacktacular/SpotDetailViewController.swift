@@ -22,7 +22,7 @@ class SpotDetailViewController: UIViewController {
     
     var spot: Spot!
     let regionDistance: CLLocationDistance = 750 // 750 meters or about a half mile
-    var locationManager = CLLocationManager?
+    var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
     
         
@@ -203,5 +203,4 @@ extension SpotDetailViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Failed to get user location.")
     }
-    
 }
