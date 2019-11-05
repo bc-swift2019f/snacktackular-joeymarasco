@@ -99,7 +99,7 @@ class SpotDetailViewController: UIViewController {
         mapView.setCenter(spot.coordinate, animated: true)
     }
     
-    func leaveViewController () {
+    func leaveViewController() {
         let isPresentingInAddMode = presentingViewController is UINavigationController
         if isPresentingInAddMode {
             dismiss(animated: true, completion: nil)
@@ -111,9 +111,11 @@ class SpotDetailViewController: UIViewController {
     
 
     @IBAction func photoButtonPressed(_ sender: UIButton) {
+        
     }
     
     @IBAction func reviewButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "AddReview", sender: nil)
     }
     
     @IBAction func lookupPlacePressed(_ sender: UIBarButtonItem) {
