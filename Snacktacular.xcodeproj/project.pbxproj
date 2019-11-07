@@ -20,6 +20,8 @@
 		C70F8DFD2370821D009243A6 /* Double+roundTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70F8DFC2370821D009243A6 /* Double+roundTo.swift */; };
 		C70F8DFF23708AC8009243A6 /* UIView+addBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70F8DFE23708AC8009243A6 /* UIView+addBorder.swift */; };
 		C70F8E212371D4A1009243A6 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70F8E202371D4A1009243A6 /* ReviewTableViewController.swift */; };
+		C70F8E232372068C009243A6 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70F8E222372068C009243A6 /* Review.swift */; };
+		C70F8E2523721565009243A6 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70F8E2423721565009243A6 /* Reviews.swift */; };
 		C710B1ED236A469A00C91D6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C710B1EC236A469A00C91D6D /* GoogleService-Info.plist */; };
 		C7882DDE236912D700BF5AC6 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7882DDD236912D700BF5AC6 /* Spot.swift */; };
 		C7882DE0236913E100BF5AC6 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7882DDF236913E100BF5AC6 /* Spots.swift */; };
@@ -43,6 +45,8 @@
 		C70F8DFC2370821D009243A6 /* Double+roundTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+roundTo.swift"; sourceTree = "<group>"; };
 		C70F8DFE23708AC8009243A6 /* UIView+addBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addBorder.swift"; sourceTree = "<group>"; };
 		C70F8E202371D4A1009243A6 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		C70F8E222372068C009243A6 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		C70F8E2423721565009243A6 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		C710B1EC236A469A00C91D6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C7882DDD236912D700BF5AC6 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		C7882DDF236913E100BF5AC6 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				3E8390DF206597F600512DEA /* AppDelegate.swift */,
 				C7882DDF236913E100BF5AC6 /* Spots.swift */,
 				C7882DDD236912D700BF5AC6 /* Spot.swift */,
+				C70F8E2423721565009243A6 /* Reviews.swift */,
+				C70F8E222372068C009243A6 /* Review.swift */,
 				3E8390E1206597F600512DEA /* SpotsListViewController.swift */,
 				3E0F960920659D9000AE450D /* SpotsTableViewCell.swift */,
 				3E0F960B2065A17500AE450D /* SpotDetailViewController.swift */,
@@ -295,11 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C70F8E2523721565009243A6 /* Reviews.swift in Sources */,
 				3E8390E2206597F600512DEA /* SpotsListViewController.swift in Sources */,
 				3E0F96102065AC1A00AE450D /* SpotPhotosCollectionViewCell.swift in Sources */,
 				3E0F960C2065A17500AE450D /* SpotDetailViewController.swift in Sources */,
 				3E0F960E2065AB6400AE450D /* SpotReviewsTableViewCell.swift in Sources */,
 				C70F8E212371D4A1009243A6 /* ReviewTableViewController.swift in Sources */,
+				C70F8E232372068C009243A6 /* Review.swift in Sources */,
 				C70F8DFF23708AC8009243A6 /* UIView+addBorder.swift in Sources */,
 				3E0F960A20659D9000AE450D /* SpotsTableViewCell.swift in Sources */,
 				C7882DDE236912D700BF5AC6 /* Spot.swift in Sources */,
