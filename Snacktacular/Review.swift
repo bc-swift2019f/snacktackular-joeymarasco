@@ -30,6 +30,12 @@ class Review {
         self.documentID = documentID
     }
     
+    convenience init() {
+        let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
+        self.init(title: "", text: "", rating: 0, reviewUserID: currentUserID, date: Date(), documentID: "")
+    }
+    
+    
     convenience init(dictionary: [String: Any]) {
         let title = dictionary["title"] as! String? ?? ""
         let text = dictionary["text"] as! String? ?? ""
@@ -39,10 +45,7 @@ class Review {
         self.init(title: title, text: text, rating: rating, reviewUserID: reviewUserID, date: date, documentID: "")
     }
     
-    convenience init() {
-        let currentUserID = Auth.auth().currentUser?.email ?? "Unknown User"
-        self.init(title: "", text: "", rating: 0, reviewUserID: currentUserID, date: Date(), documentID: "")
-    }
+
     
     func saveData(spot: Spot, completed: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
@@ -56,7 +59,7 @@ class Review {
                     print("****ERROR: updating document \(self.documentID) in spot \(spot.documentID) \(error.localizedDescription)")
                     completed(false)
                 } else {
-                    print("^^^ Document updated with refID \(ref.documentID)")
+                    print("****ERROR: updating document \(self.documentID) in spot \(spot.documentID)")
                     completed(true)
                 }
                 

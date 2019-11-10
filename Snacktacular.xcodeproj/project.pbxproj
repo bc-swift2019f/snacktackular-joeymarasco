@@ -25,6 +25,8 @@
 		C710B1ED236A469A00C91D6D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C710B1EC236A469A00C91D6D /* GoogleService-Info.plist */; };
 		C7882DDE236912D700BF5AC6 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7882DDD236912D700BF5AC6 /* Spot.swift */; };
 		C7882DE0236913E100BF5AC6 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7882DDF236913E100BF5AC6 /* Spots.swift */; };
+		C7906C852378C67100C2B6F1 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7906C842378C67100C2B6F1 /* Photo.swift */; };
+		C7906C872378C72400C2B6F1 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7906C862378C72400C2B6F1 /* Photos.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		C710B1EC236A469A00C91D6D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C7882DDD236912D700BF5AC6 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		C7882DDF236913E100BF5AC6 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
+		C7906C842378C67100C2B6F1 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		C7906C862378C72400C2B6F1 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 				C7882DDD236912D700BF5AC6 /* Spot.swift */,
 				C70F8E2423721565009243A6 /* Reviews.swift */,
 				C70F8E222372068C009243A6 /* Review.swift */,
+				C7906C862378C72400C2B6F1 /* Photos.swift */,
+				C7906C842378C67100C2B6F1 /* Photo.swift */,
 				3E8390E1206597F600512DEA /* SpotsListViewController.swift */,
 				3E0F960920659D9000AE450D /* SpotsTableViewCell.swift */,
 				3E0F960B2065A17500AE450D /* SpotDetailViewController.swift */,
@@ -301,8 +307,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7906C852378C67100C2B6F1 /* Photo.swift in Sources */,
 				C70F8E2523721565009243A6 /* Reviews.swift in Sources */,
 				3E8390E2206597F600512DEA /* SpotsListViewController.swift in Sources */,
+				C7906C872378C72400C2B6F1 /* Photos.swift in Sources */,
 				3E0F96102065AC1A00AE450D /* SpotPhotosCollectionViewCell.swift in Sources */,
 				3E0F960C2065A17500AE450D /* SpotDetailViewController.swift in Sources */,
 				3E0F960E2065AB6400AE450D /* SpotReviewsTableViewCell.swift in Sources */,
