@@ -15,6 +15,9 @@ class Photo {
     var postedBy: String
     var date: Date
     var documentUUID: String // Universal Unique Identifier
+    var dictionary: [String:Any] {
+        return ["description": description, "postedBy": postedBy, "Date": date]
+    }
     
     
     init(image: UIImage, description: String, postedBy: String, date: Date, documentUUID: String) {
@@ -30,7 +33,49 @@ class Photo {
         self.init(image: UIImage(), description: "", postedBy: postedBy, date: Date(), documentUUID: "")
     }
 
-
-
-
+    func saveData(spot: Spot, completed: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
+        let storage = Storage.storage()
+        // convert photo.image to a data type so it can be saved in cloud firestore
+        guard let photoData = self.image.jpegData(compressionQuality: 0.5) else {
+            print("ERROR: could not convert image to data type")
+            return completed(false)
+        }
+        let uploadMeta = StorageMetadata()
+        uploadMeta.contentType = "image/jpeg"
+        documentUUID = UUID().uuidString // create a unique id to use for the photo in firestore
+        // create a ref to upload storage to the bucket with the name we created
+        let storageRef = storage.reference().child(spot.documentID).child(self.documentUUID)
+        let uploadTask = storageRef.putData(photoData, metadata: uploadMeta) {metadata, error in
+            guard error == nil else {
+                print("ERROR during putDataStorageUpload for reference \(storageRef), error: \(error!.localizedDescription)")
+                return
+            }
+        }
+        
+        uploadTask.observe(.success) { (snapshot) in
+            let dataToSave = self.dictionary
+            let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentUUID)
+            ref.setData(self.dictionary) { (error) in
+                if let error = error {
+                    print("****ERROR: updating document \(self.documentUUID) in spot \(spot.documentID) \(error.localizedDescription)")
+                    completed(false)
+                } else {
+                    print("****ERROR: updating document \(self.documentUUID) with ref \(ref.documentID)")
+                    completed(true)
+                }
+            }
+        }
+            
+        
+        uploadTask.observe(.failure) { (snapshot) in
+            if let error = snapshot.error {
+                print("ERROR: upload task for file\(self.documentUUID) failed")
+            }
+            return completed(false)
+        }
+    }
 }
+
+
+
