@@ -62,7 +62,9 @@ class Review {
                     completed(false)
                 } else {
                     print("****ERROR: updating document \(self.documentID) in spot \(spot.documentID)")
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
                 
             }
@@ -74,7 +76,9 @@ class Review {
                     completed(false)
                 } else {
                     print("^^^ Document created with refID \(ref?.documentID ?? "unknown")")
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
                 
             }
@@ -88,7 +92,10 @@ class Review {
                 print("*** ERROR: deleting documentID \(self.documentID), \(error.localizedDescription)")
                 completed(false)
             } else {
-                completed(true)
+                spot.updateAverageRating {
+                    completed(true)
+                }
+                
             }
         }
     }
