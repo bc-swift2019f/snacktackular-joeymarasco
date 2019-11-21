@@ -32,6 +32,13 @@ class Photo {
         let postedBy = Auth.auth().currentUser?.email ?? "Unknown User"
         self.init(image: UIImage(), description: "", postedBy: postedBy, date: Date(), documentUUID: "")
     }
+    
+    convenience init(dictionary: [String: Any]) {
+        let description = dictionary["description"] as! String? ?? ""
+        let postedBy = dictionary["postedBy"] as! String? ?? ""
+        let date = dictionary["date"] as! String? ?? String
+        self.init(image: UIImage(), description: description, postedBy: postedBy, date: date, documentUUID: "")
+    }
 
     func saveData(spot: Spot, completed: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
